@@ -9,7 +9,11 @@ readme = "README.md"
 python = "^3.11"
 qe-tools = "^2.2.0"
 pytest = "^8.2.2"
+click = "^8.1.7"
 
+[tool.poetry.scripts]
+make_qe_script = "qe_utils.cli.command_script:make_qe_command_script"
+write_plotband = "qe_utils.cli.write_plotband:write_plotband"
 
 [build-system]
 requires = ["poetry-core"]
