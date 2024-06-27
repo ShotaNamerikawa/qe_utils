@@ -1,7 +1,7 @@
 import os
 import math
 import numpy as np
-
+from qe_utils.io_file import IOFiles
 
 class Filband:
     """read data from filband
@@ -16,9 +16,13 @@ class Filband:
         """
         self.filband_file = filband_file
         print("read filband from {}".format(self.filband_file))
-        self.read_filband()
+        self.read()
         
-    def read_filband(self):
+    @classmethod
+    def from_iofiles(self,iofiles:IOFiles):
+        pass
+        
+    def read(self):
         assert os.path.isfile(self.filband_file), "filband file, {} not found".format(self.filband_file)
         with open(self.filband_file) as fp:
             first_line = fp.readline()
@@ -30,9 +34,12 @@ class Filband:
             lines = fp.readlines()
             for indk in np.arange(self.num_k):
                 self.k_list[indk] = np.array(lines[indk*num_line_for_one_k].strip("\n").split(),dtype=np.float64)
-                self.bands_en[indk] = np.array([line.strip("\n").split() for line in 
-                                        lines[indk*num_line_for_one_k+1:(indk+1)*num_line_for_one_k]],
-                                        dtype=np.float64).ravel()
+                
+                #FIXME: the performance of the code below might not be good.
+                bands_en = []
+                for line in lines[indk*num_line_for_one_k+1:(indk+1)*num_line_for_one_k]:
+                    bands_en += [float(value) for value in line.strip("\n").split()]
+                self.bands_en[indk] = bands_en 
                 
     @property 
     def e_max(self):
@@ -45,4 +52,12 @@ class Filband:
         if not hasattr(self, "_e_min"):
             self._e_min = np.min(self.bands_en)
         return self._e_min
+        
+    def __str__(self):
+        print("""
+              num_k   :{}
+              num_band:{}
+              e_min   :{}
+              e_max   :{}
+              """.format(self.num_k, self.num_band, self.e_min, self.e_max))
         
