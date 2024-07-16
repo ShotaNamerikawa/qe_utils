@@ -4,7 +4,7 @@ import numpy as np
 
 def test_filband():
     start = time.time()
-    filband = Filband("tests/models/graphene.bands.dat")
+    filband = Filband("tests/models/bands.dat")
     end = time.time()
     print("time: {} [sec]".format(end - start))
     
