@@ -4,7 +4,7 @@ Provide utilities to treat input & output files of QuantumEspresso.
 # Examples
 
 ## Make a jobscript from a toml file
-By using qe_utils, you can make a jobscript semi-automatically.
+By using `qe_utils`, you can make a jobscript semi-automatically.
 
 ### Step1
 Make a toml file named `qe.toml`. For example, the content of `qe.toml` is such as
