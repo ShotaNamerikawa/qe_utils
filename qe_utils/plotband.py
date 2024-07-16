@@ -10,12 +10,15 @@ import click
 def write_plotband_input(io_files:IOFiles, E_F = None, proj_orbs = None, gnu_file="projbands.gnu", gnu_dat_file = "projbands.gnu.dat", ps_file = "projbands.ps" ,e_delta=5, e_bottom=None, e_top = None):
     #preprocess
     assert "plotband" in io_files.caltype_io, "plotband cannot read from io_files."
+    assert "bandsx"   in io_files.caltype_io, "io_files does not have information of bands.x"
+    assert "filband"  in io_files.caltype_io["bandsx"], "bandsx does not output filband"
     
-    filband = Filband(io_files.caltype_io["bandsx"]["filband"])
+    filband = Filband(io_files.get_proper_path("bandsx","filband"))
     
     if E_F is None:
+        #try to find E_F from nscf.out or scf.out
         try:
-            for file in [io_files.caltype_io["nscf"]["output"],io_files.caltype_io["scf"]["output"]]: 
+            for file in [io_files.get_proper_path("nscf","output"), io_files.get_proper_path("scf","output")]: 
                 if not os.path.isfile(file):
                     continue
                 E_F = PWxOut(file).fermi_energy
@@ -28,15 +31,21 @@ def write_plotband_input(io_files:IOFiles, E_F = None, proj_orbs = None, gnu_fil
             print("could not obtain the Fermi energy.")
         
     if proj_orbs is None:
+        #indices of orbitals projectability to which is calculated.
         try:
-            natomwfc = ProjwfcOut(io_files.caltype_io["projwfc"]["output"]).natomwfc
+            projwfcout = ProjwfcOut(io_files.get_proper_path("projwfc","output"))
+            natomwfc = projwfcout.natomwfc
             proj_orbs = range(1, natomwfc + 1)
+            if proj_orbs is None:
+                raise ValueError()
         except FileNotFoundError as e:
             print(e)
+            raise click.ClickException("file is not found.")
         except ValueError as e:
             print(e)
+            raise click.ClickException("proj_orbs is None.")
         except Exception:
-            print("could not obtain proj_orbs.")
+            raise Exception("proj_orbs is not found.")
         
     if e_top is None or e_bottom is None:
         if e_top is None:
@@ -46,8 +55,8 @@ def write_plotband_input(io_files:IOFiles, E_F = None, proj_orbs = None, gnu_fil
             
     #end preprocess
         
-    with open(io_files.caltype_io["plotband"]["input"],"w") as fp:
-        fp.write(filband.filband_file + "\n") #output of bands.x
+    with open(io_files.get_proper_path("plotband","input"),"w") as fp:
+        fp.write(io_files.caltype_io["bandsx"]["filband"] + "\n") #output of bands.x
         for orb in proj_orbs:
             fp.write("{:d} ".format(orb))
         fp.write("\n")
