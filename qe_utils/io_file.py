@@ -32,9 +32,8 @@ class IOFiles:
     order_cal = ["scf", "bands", "projwfc", "bandsx", "plotband", "nscf"] 
     #The fields of this list is in calculation order.
     
-    def __init__(self, io_dict:NestedDict, root_dir = None, outdir:str = "./work", nproc:int|None = None, toml_file:str|None = None):
+    def __init__(self, io_dict:NestedDict, outdir:str = "./work", nproc:int|None = None, toml_file:str|None = None):
         self.outdir = outdir
-        self.root_dir = root_dir
         self.toml_file = toml_file
         self.mpirun_str = "mpirun -n {} ".format(nproc) if (nproc != None and nproc > 1) else "" 
         #space is needed after mpirun -n NPROC to print script properly.
@@ -51,16 +50,16 @@ class IOFiles:
     @classmethod
     def from_toml(cls,toml_file,**kwargs):
         io_dict = cls._read_toml(toml_file)
-        io_dict, root_dir, nproc = cls._read_and_pop_root_dir(io_dict)
+        io_dict, nproc = cls._read_and_pop_root_dir(io_dict)
         
-        for key in ["root_dir", "nproc"]:
+        for key in ["nproc"]:
             #replace keyword arguments for __init__ if they are given by kwargs and they are not given by a toml file.
             if key in kwargs:
                 if eval(f"{key} is not None"):
                     exec(f"{key} = {kwargs[key]}")
                 del kwargs[key]
         
-        return cls(io_dict, toml_file = toml_file, root_dir = root_dir, nproc = nproc, **kwargs)
+        return cls(io_dict, toml_file = toml_file, nproc = nproc, **kwargs)
         
     def make_run_script(self, caltype_list: list|None = None):
         """make a job script of QuantumEspresso.
@@ -68,8 +67,6 @@ class IOFiles:
         dir_to_which_DFT_copied = copy.deepcopy(self.unique_dir)
         script_str = "" #String representing the content of a job script.
         
-        if self.root_dir is not None:
-            script_str += "cd {}\n".format(self.root_dir)
         script_str +=  "ROOTDIR=$(pwd)\n" 
         
         
@@ -89,7 +86,7 @@ class IOFiles:
             if "plotband" in caltype:            
                 if self.toml_file is not None:
                     #If a toml file is given, input of plotband.x is automatically written.
-                    script_str += "write_plotband --toml_file {}\n".format(self.toml_file)
+                    script_str += "make_plotband_input --toml_file {}\n".format(self.toml_file)
             
             if "dir" in self.caltype_io[caltype]:
                 # copy output directory of DFT calculations.
@@ -127,7 +124,7 @@ class IOFiles:
                 # Therefore, we remove the suffix.
                 script_str += "mv {filproj}.projwfc_up {filproj}\n".format(filproj = self.caltype_io[caltype]["filproj"])
             
-            if ("plotband" in caltype or i == len(caltype_list) - 1 or 
+            if (i == len(caltype_list) - 1 or "plotband" in caltype_list[caltype_list.index(caltype) + 1] or 
                 not self._check_has_same_dir(caltype, caltype_list[caltype_list.index(caltype) + 1])):    
                 if "dir" in self.caltype_io[caltype]: script_str += "cd $ROOTDIR\n"
                 
@@ -145,17 +142,13 @@ class IOFiles:
         io_dict : _type_
             _description_
         """
-        root_dir = None
         nproc = None
         
-        if "root_dir" in io_dict:
-            root_dir = io_dict["root_dir"]
-            del io_dict["root_dir"]
         if "nproc" in io_dict:
             nproc = io_dict["nproc"]
             del io_dict["nproc"]
             
-        return io_dict, root_dir, nproc
+        return io_dict, nproc
             
             
     
@@ -190,12 +183,11 @@ class IOFiles:
         if caltype in self.caltype_io and iofile in self.caltype_io[caltype]:             
             
             iofile = self.caltype_io[caltype][iofile]
-            dir = self.root_dir if self.root_dir is not None else ""
 
             if "dir" in self.caltype_io[caltype]:
-                return os.path.join(dir,self.caltype_io[caltype]["dir"], iofile)
+                return os.path.join(self.caltype_io[caltype]["dir"], iofile)
             else:
-                return os.path.join(dir, iofile)
+                return iofile
         else:
             raise ValueError("caltype or iofile is not in self.caltype_io")
 
