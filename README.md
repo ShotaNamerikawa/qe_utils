@@ -5,7 +5,7 @@ Provide utilities to treat input & output files of QuantumEspresso.
 
 Prepare a toml file named `qe.toml` in the root directory of QE calculations. The content of `qe.toml` is
 ```toml
-[caltype1] #calculation type of QE such as scf, nscf, bands, ..., 
+[caltype1] # calculation type of QE such as scf, nscf, bands, ... 
     input  = input-file name of caltype1
     output = output-file name of caltype1
     dir    = directory to execute caltype1 (optional)
