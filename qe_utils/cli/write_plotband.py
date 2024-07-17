@@ -8,7 +8,7 @@ NPROC = 22
 @click.option('--toml_file',default="qe.toml")
 @click.option('--nproc', default=NPROC)
 @click.option('--natomwfc', default=None)
-def write_plotband(toml_file:str, nproc = NPROC, natomwfc = None, **kwargs):
+def make_plotband_input(toml_file:str, nproc = NPROC, natomwfc = None, **kwargs):
     """write input of plotband.x.
 
     Parameters

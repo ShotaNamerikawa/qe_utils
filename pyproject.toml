@@ -13,7 +13,7 @@ click = "^8.1.7"
 
 [tool.poetry.scripts]
 make_qe_script = "qe_utils.cli.command_script:make_qe_command_script"
-write_plotband = "qe_utils.cli.write_plotband:write_plotband"
+make_plotband_input = "qe_utils.cli.write_plotband:make_plotband_input"
 
 [build-system]
 requires = ["poetry-core"]
