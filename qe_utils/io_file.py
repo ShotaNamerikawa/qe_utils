@@ -3,7 +3,7 @@ import textwrap
 import os
 import copy
 from collections import OrderedDict
-from typing import Dict
+from typing import Dict, Any
 
 NestedDict = Dict[str, Dict[str, str]]
 NPROC = 22 #TODO :move this to file containing global variables.
@@ -36,7 +36,8 @@ class IOFiles:
         self.outdir = outdir
         self.root_dir = root_dir
         self.toml_file = toml_file
-        self.mpirun_str = "mpirun -n {}".format(nproc) if (nproc != None and nproc > 1) else ""
+        self.mpirun_str = "mpirun -n {} ".format(nproc) if (nproc != None and nproc > 1) else "" 
+        #space is needed after mpirun -n NPROC to print script properly.
             
         self.unique_dir = [] #list of directories in which QE commands are executed.
             
@@ -69,11 +70,12 @@ class IOFiles:
         
         if self.root_dir is not None:
             script_str += "cd {}\n".format(self.root_dir)
-        script_str +=  "ROOTDIR=$(pwd) \n" 
+        script_str +=  "ROOTDIR=$(pwd)\n" 
         
         
         if caltype_list is None:
-            caltype_list = self.non_skip_caltype
+            # write only non-skipped command to the jobscript. 
+            caltype_list = self.non_skip_caltype 
         else:
             # check all caltype in caltype_list 
             for caltype in caltype_list:
@@ -102,8 +104,9 @@ class IOFiles:
                                                   fi \n""".format(caldir = dirname, outdir = self.outdir))
                     dir_to_which_DFT_copied.remove(dirname)
                 
-                if ("plotband" in caltype or i == 0 or 
-                    not self._check_has_same_dir(caltype, caltype_list[caltype_list.index(caltype) -1])):    
+                if ("plotband" in caltype or i == 0 or  
+                    not self._check_has_same_dir(caltype, 
+                                                 caltype_list[caltype_list.index(caltype) -1])):    
                     script_str += "cd {}\n".format(dirname)                  
                 
             if ("scf" in caltype) or ("nscf" in caltype) or ("bands" in caltype):
@@ -116,7 +119,7 @@ class IOFiles:
                 command = "plotband.x"
             else:
                 raise ValueError("caltype, {} is invalid".format(caltype))
-            script_str += "{} {} < {} > {}\n".format(self.mpirun_str, command, input, output) 
+            script_str += "{}{} < {} > {}\n".format(self.mpirun_str, command, input, output) 
                 
             if "projwfc" in caltype and "filproj" in self.caltype_io[caltype]:
                 # QE add a suffix, "projwfc_up", to filproj and
@@ -207,8 +210,8 @@ class IOFiles:
         diff_num : int
             check directory of caltype next door to self.caltype_io[ind_caltype] by diff_num.
         """
-        if "dir" in caltype1 and "dir" in caltype2:
-            if caltype1["dir"] == caltype2["dir"]: return True
+        if "dir" in self.caltype_io[caltype1] and "dir" in self.caltype_io[caltype2]:
+            if self.caltype_io[caltype1]["dir"].strip() == self.caltype_io[caltype2]["dir"].strip() : return True
         return False
         
     @property
