@@ -1,10 +1,10 @@
 # qe_utils
-Provide utilities to treat input & output files of QuantumEspresso.
+Provide utilities to treat input & output files of Quantum ESPRESSO.
 
 # Basic Usage
 
 Prepare a toml file named `qe.toml` in the root directory of QE calculations. The content of `qe.toml` is
-```toml
+```toml:qe.toml
 [caltype1] # calculation type of QE such as scf, nscf, bands, ... 
     input  = input-file name of caltype1
     output = output-file name of caltype1
@@ -29,7 +29,7 @@ By using `qe_utils`, you can make a jobscript semi-automatically.
 
 ### Step1
 Make a toml file named `qe.toml`. For example, the content of `qe.toml` is like
-```toml
+```toml:qe.toml
 [scf]
     input   = "scf.in"
     output  = "scf.out"
@@ -63,7 +63,7 @@ make_qe_script
 in the terminal from the directory where `qe.toml` exists.
 Then, a file named `qe_script.sh` is created. For the `qe.toml` in step1, the content of 
 `qe_script.sh` is
-```bash
+```bash:qe_script.sh
 #!/bin/bash 
 ROOTDIR=$(pwd)
 pw.x < scf.in > scf.out
@@ -83,3 +83,6 @@ plotband.x < plotband.in > plotband.out
 cd $ROOTDIR
 pw.x < nscf.in > nscf.out
 ```
+
+# Other great plugins for Quantum ESPRESSO
+- [aiida-quantumespresso](https://github.com/aiidateam/aiida-quantumespresso/tree/main)
