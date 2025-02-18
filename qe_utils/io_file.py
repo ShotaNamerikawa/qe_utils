@@ -11,8 +11,7 @@ NPROC = 22 #TODO :move this to file containing global variables.
 class IOFiles:
     """treat all io files in QE.
     
-    This class generate a script file to execute QE commands 
-    from names of io files.
+    This class generate a script file to execute QE commands from names of io files.
     
     Structure of self.io_dict
         io_dict = {caltype1: io_information_for_caltype1, caltype2: ..., root_dir(optional):path_to_root_dir}  
@@ -60,6 +59,41 @@ class IOFiles:
                 del kwargs[key]
         
         return cls(io_dict, toml_file = toml_file, nproc = nproc, **kwargs)
+    
+    @classmethod
+    def show_cal_types(cls):
+        """show explanation of all cal_type
+        """
+        for cal_type in cls.order_cal:
+            print(f"{cal_type}:")
+            if cal_type in ["scf", "bands", "nscf"]:
+                print(f"  pw.x io for calculation = {cal_type}")
+            elif cal_type == "bandsx":
+                print("  bands.x io")
+            elif cal_type in ["projwfc", "plotband"]:
+                print(f"  {cal_type}.x io")
+                
+    @classmethod
+    def show_cal_type(cls, cal_type:str):
+        """show detailed information of the cal_type.
+        
+        NOTE: do not forget this section after changing IOFiles.
+
+        Parameters
+        ----------
+        cal_type : str
+            the name of cal_type
+        """
+        if cal_type in ["scf", "bands", "nscf"]:
+            print(f"pw.x information for calculation = {cal_type}")
+        elif cal_type == "projwfc":
+            print(f"projwfc.x information")
+        elif cal_type == "plotband":
+            print(f"plotband.x information")
+            print("  To execute plotband.x using this command,")
+            print("  projfwc and bandsx block with same dir parameter must be in the input toml file.")   
+            print("  Furthermore, filband parameter must be given in bandsx block.") 
+        
         
     def make_run_script(self, caltype_list: list|None = None):
         """make a job script of QuantumEspresso.

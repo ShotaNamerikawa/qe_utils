@@ -84,5 +84,15 @@ cd $ROOTDIR
 pw.x < nscf.in > nscf.out
 ```
 
+## Analyze the results of band calculations
+
+### analyze projwfc results
+To analyze the result of `projwfc.x`, you can use the `projwfc` command provided by this package. Subcommands are:
+
+- `states`: You can obtain the information of the pseudo atomic orbitals.
+- `projections` : print projection value of each orbital at band energies.
+- `sort_orbs` : sort orbitals according to their contributions to bands in selected energy range.
+
+
 # Other great plugins for Quantum ESPRESSO
 - [aiida-quantumespresso](https://github.com/aiidateam/aiida-quantumespresso/tree/main)

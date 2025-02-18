@@ -1,4 +1,4 @@
-"""make input file for plotband
+"""make input files of plotband.x
 """
 import os 
 from qe_utils.pwx_out import PWxOut
@@ -7,11 +7,14 @@ from qe_utils.io_file import IOFiles
 from qe_utils.projwfc import ProjwfcOut
 import click
 
-def write_plotband_input(io_files:IOFiles, E_F = None, proj_orbs = None, gnu_file="projbands.gnu", gnu_dat_file = "projbands.gnu.dat", ps_file = "projbands.ps" ,e_delta=5, e_bottom=None, e_top = None):
+def write_plotband_input(io_files:IOFiles, E_F = None, proj_orbs = None, gnu_file="projbands.gnu", 
+                         gnu_dat_file = "projbands.gnu.dat", ps_file = "projbands.ps", 
+                         e_delta=5, e_bottom=None, e_top = None):
+    # TODO: create class to store input paramters.
     #preprocess
     assert "plotband" in io_files.caltype_io, "plotband cannot read from io_files."
     assert "bandsx"   in io_files.caltype_io, "io_files does not have information of bands.x"
-    assert "filband"  in io_files.caltype_io["bandsx"], "bandsx does not output filband"
+    assert "filband"  in io_files.caltype_io["bandsx"], "bands.x does not output filband"
     
     filband = Filband(io_files.get_proper_path("bandsx","filband"))
     

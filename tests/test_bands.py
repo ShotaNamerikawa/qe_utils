@@ -1,4 +1,5 @@
 from qe_utils.bands import *
+from qe_utils.pwx_in import PWxIn
 import time
 import numpy as np
 
@@ -18,3 +19,8 @@ def test_filband():
     np.testing.assert_almost_equal(filband.e_max, e_max)
     np.testing.assert_almost_equal(filband.e_min, e_min)
     
+def test_filband_gnu():
+    filband = Filband("tests/models/test_bands.out")
+    filbandgnu = Filbandgnu.from_Filband(filband)
+    print(filbandgnu.ek)
+    filbandgnu.plot(savefig = "tests/models/test_filband.pdf", pwxin = PWxIn.from_pwx_input("tests/models/test_band_nscf.in"))
