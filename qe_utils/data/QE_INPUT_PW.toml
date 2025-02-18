@@ -1,0 +1,1044 @@
+["&CONTROL".calculation]
+type = "CHARACTER"
+default = "scf"
+
+["&CONTROL".title]
+type = "CHARACTER"
+default = ""
+
+["&CONTROL".verbosity]
+type = "CHARACTER"
+default = "low"
+
+["&CONTROL".restart_mode]
+type = "CHARACTER"
+default = "from_scratch"
+
+["&CONTROL".wf_collect]
+type = "LOGICAL"
+
+["&CONTROL".nstep]
+type = "INTEGER"
+default = "1"
+
+["&CONTROL".iprint]
+type = "INTEGER"
+default = "write"
+
+["&CONTROL".tstress]
+type = "LOGICAL"
+default = ".false."
+
+["&CONTROL".tprnfor]
+type = "LOGICAL"
+
+["&CONTROL".dt]
+type = "REAL"
+default = "20.D0"
+
+["&CONTROL".outdir]
+type = "CHARACTER"
+default = "value"
+
+["&CONTROL".wfcdir]
+type = "CHARACTER"
+default = "same"
+
+["&CONTROL".prefix]
+type = "CHARACTER"
+default = "pwscf"
+
+["&CONTROL".lkpoint_dir]
+type = "LOGICAL"
+
+["&CONTROL".max_seconds]
+type = "REAL"
+default = "1.D+7,"
+
+["&CONTROL".etot_conv_thr]
+type = "REAL"
+default = "1.0D-4"
+
+["&CONTROL".forc_conv_thr]
+type = "REAL"
+default = "1.0D-3"
+
+["&CONTROL".disk_io]
+type = "CHARACTER"
+default = "see"
+
+["&CONTROL".pseudo_dir]
+type = "CHARACTER"
+default = "value"
+
+["&CONTROL".tefield]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&CONTROL".dipfield]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&CONTROL".lelfield]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&CONTROL".nberrycyc]
+type = "INTEGER"
+default = "1"
+
+["&CONTROL".lorbm]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&CONTROL".lberry]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&CONTROL".gdir]
+type = "INTEGER"
+
+["&CONTROL".nppstr]
+type = "INTEGER"
+
+["&CONTROL".gate]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&CONTROL".twochem]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&CONTROL".lfcp]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&CONTROL".trism]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&SYSTEM".ibrav]
+type = "INTEGER"
+status = "REQUIRED"
+
+["&SYSTEM"."celldm(i), i=1,6"]
+type = "REAL"
+
+["&SYSTEM"."A, B, C, cosAB, cosAC, cosBC"]
+type = "REAL"
+
+["&SYSTEM".nat]
+type = "INTEGER"
+status = "REQUIRED"
+
+["&SYSTEM".ntyp]
+type = "INTEGER"
+status = "REQUIRED"
+
+["&SYSTEM".nbnd]
+type = "INTEGER"
+default = "for"
+
+["&SYSTEM".nbnd_cond]
+type = "INTEGER"
+default = "nbnd_cond"
+
+["&SYSTEM".tot_charge]
+type = "REAL"
+default = "0.0"
+
+["&SYSTEM"."starting_charge(i), i=1,ntyp"]
+type = "REAL"
+default = "0.0"
+
+["&SYSTEM".tot_magnetization]
+type = "REAL"
+default = "-10000"
+
+["&SYSTEM"."starting_magnetization(i), i=1,ntyp"]
+type = "REAL"
+default = "0"
+
+["&SYSTEM".ecutwfc]
+type = "REAL"
+status = "REQUIRED"
+
+["&SYSTEM".ecutrho]
+type = "REAL"
+default = "4"
+
+["&SYSTEM".ecutfock]
+type = "REAL"
+default = "ecutrho"
+
+["&SYSTEM"."nr1, nr2, nr3"]
+type = "INTEGER"
+
+["&SYSTEM"."nr1s, nr2s, nr3s"]
+type = "INTEGER"
+
+["&SYSTEM".nosym]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&SYSTEM".nosym_evc]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&SYSTEM".noinv]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&SYSTEM".no_t_rev]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&SYSTEM".force_symmorphic]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&SYSTEM".use_all_frac]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&SYSTEM".occupations]
+type = "CHARACTER"
+
+["&SYSTEM".one_atom_occupations]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&SYSTEM".starting_spin_angle]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&SYSTEM".degauss_cond]
+type = "REAL"
+default = "0.D0"
+
+["&SYSTEM".nelec_cond]
+type = "REAL"
+default = "0.D0"
+
+["&SYSTEM".degauss]
+type = "REAL"
+default = "0.D0"
+
+["&SYSTEM".smearing]
+type = "CHARACTER"
+default = "gaussian"
+
+["&SYSTEM".nspin]
+type = "INTEGER"
+default = "1"
+
+["&SYSTEM".sic_gamma]
+type = "REAL"
+default = "0"
+
+["&SYSTEM".pol_type]
+type = "CHARACTER"
+
+["&SYSTEM".sic_energy]
+type = "LOGICAL"
+default = ".false."
+
+["&SYSTEM".sci_vb]
+type = "REAL"
+default = "0"
+
+["&SYSTEM".sci_cb]
+type = "REAL"
+default = "0"
+
+["&SYSTEM".noncolin]
+type = "LOGICAL"
+default = ".false."
+
+["&SYSTEM".ecfixed]
+type = "REAL"
+default = "0.0"
+
+["&SYSTEM".qcutz]
+type = "REAL"
+default = "0.0"
+
+["&SYSTEM".q2sigma]
+type = "REAL"
+default = "0.1"
+
+["&SYSTEM".input_dft]
+type = "CHARACTER"
+default = "read"
+
+["&SYSTEM".ace]
+type = "LOGICAL"
+default = "true"
+
+["&SYSTEM".exx_fraction]
+type = "REAL"
+default = "it"
+
+["&SYSTEM".screening_parameter]
+type = "REAL"
+default = "0.106"
+
+["&SYSTEM".exxdiv_treatment]
+type = "CHARACTER"
+default = "gygi-baldereschi"
+
+["&SYSTEM".x_gamma_extrapolation]
+type = "LOGICAL"
+default = ".true."
+
+["&SYSTEM".ecutvcut]
+type = "REAL"
+default = "0.0"
+
+["&SYSTEM"."nqx1, nqx2, nqx3"]
+type = "INTEGER"
+
+["&SYSTEM".localization_thr]
+type = "REAL"
+default = "0.0"
+
+["&SYSTEM"."Hubbard_occ(ityp,i), (ityp,i) = (1,1) . . . (ntyp,3)"]
+type = "REAL"
+default = "read"
+
+["&SYSTEM"."Hubbard_alpha(i), i=1,ntyp"]
+type = "REAL"
+default = "0.D0"
+
+["&SYSTEM"."Hubbard_beta(i), i=1,ntyp"]
+type = "REAL"
+default = "0.D0"
+
+["&SYSTEM"."starting_ns_eigenvalue(m,ispin,ityp), (m,ispin,ityp) = (1,1,1) . . . (2*lmax+1,nspin or npol,ntyp)"]
+type = "REAL"
+default = "-1.d0"
+
+["&SYSTEM".dmft]
+type = "LOGICAL"
+default = ".FALSE."
+status = "Requires"
+
+["&SYSTEM".dmft_prefix]
+type = "CHARACTER"
+default = "prefix"
+
+["&SYSTEM".ensemble_energies]
+type = "LOGICAL"
+default = ".false."
+
+["&SYSTEM".edir]
+type = "INTEGER"
+
+["&SYSTEM".emaxpos]
+type = "REAL"
+default = "0.5D0"
+
+["&SYSTEM".eopreg]
+type = "REAL"
+default = "0.1D0"
+
+["&SYSTEM".eamp]
+type = "REAL"
+default = "0.001"
+
+["&SYSTEM"."angle1(i), i=1,ntyp"]
+type = "REAL"
+
+["&SYSTEM"."angle2(i), i=1,ntyp"]
+type = "REAL"
+
+["&SYSTEM".lforcet]
+type = "LOGICAL"
+
+["&SYSTEM".constrained_magnetization]
+type = "CHARACTER"
+default = "none"
+
+["&SYSTEM"."fixed_magnetization(i), i=1,3"]
+type = "REAL"
+default = "0.d0"
+
+["&SYSTEM".lambda]
+type = "REAL"
+default = "1.d0"
+
+["&SYSTEM".report]
+type = "INTEGER"
+default = "-1"
+
+["&SYSTEM".lspinorb]
+type = "LOGICAL"
+
+["&SYSTEM".assume_isolated]
+type = "CHARACTER"
+default = "none"
+
+["&SYSTEM".esm_bc]
+type = "CHARACTER"
+default = "pbc"
+
+["&SYSTEM".esm_w]
+type = "REAL"
+default = "0.d0"
+
+["&SYSTEM".esm_efield]
+type = "REAL"
+default = "0.d0"
+
+["&SYSTEM".esm_nfit]
+type = "INTEGER"
+default = "4"
+
+["&SYSTEM".lgcscf]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&SYSTEM".gcscf_mu]
+type = "REAL"
+status = "REQUIRED"
+
+["&SYSTEM".gcscf_conv_thr]
+type = "REAL"
+default = "1.D-2"
+
+["&SYSTEM".gcscf_beta]
+type = "REAL"
+default = "0.05D0"
+
+["&SYSTEM".vdw_corr]
+type = "CHARACTER"
+default = "none"
+
+["&SYSTEM".london]
+type = "LOGICAL"
+default = ".FALSE."
+status = "OBSOLESCENT,"
+
+["&SYSTEM".london_s6]
+type = "REAL"
+default = "0.75"
+
+["&SYSTEM"."london_c6(i), i=1,ntyp"]
+type = "REAL"
+default = "standard"
+
+["&SYSTEM"."london_rvdw(i), i=1,ntyp"]
+type = "REAL"
+default = "standard"
+
+["&SYSTEM".london_rcut]
+type = "REAL"
+default = "200"
+
+["&SYSTEM".dftd3_version]
+type = "integer"
+default = "3"
+
+["&SYSTEM".dftd3_threebody]
+type = "LOGICAL"
+default = "TRUE"
+
+["&SYSTEM".ts_vdw_econv_thr]
+type = "REAL"
+default = "1.D-6"
+
+["&SYSTEM".ts_vdw_isolated]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&SYSTEM".xdm]
+type = "LOGICAL"
+default = ".FALSE."
+status = "OBSOLESCENT,"
+
+["&SYSTEM".xdm_a1]
+type = "REAL"
+default = "0.6836"
+
+["&SYSTEM".xdm_a2]
+type = "REAL"
+default = "1.5045"
+
+["&SYSTEM".space_group]
+type = "INTEGER"
+default = "0"
+
+["&SYSTEM".uniqueb]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&SYSTEM".origin_choice]
+type = "INTEGER"
+default = "1"
+
+["&SYSTEM".rhombohedral]
+type = "LOGICAL"
+default = ".TRUE."
+
+["&SYSTEM".zgate]
+type = "REAL"
+default = "0.5"
+
+["&SYSTEM".relaxz]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&SYSTEM".block]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&SYSTEM".block_1]
+type = "REAL"
+default = "0.45"
+
+["&SYSTEM".block_2]
+type = "REAL"
+default = "0.55"
+
+["&SYSTEM".block_height]
+type = "REAL"
+default = "0.1"
+
+["&SYSTEM".nextffield]
+type = "INTEGER"
+default = "0"
+
+["&ELECTRONS".electron_maxstep]
+type = "INTEGER"
+default = "100"
+
+["&ELECTRONS".exx_maxstep]
+type = "INTEGER"
+default = "100"
+
+["&ELECTRONS".scf_must_converge]
+type = "LOGICAL"
+default = ".TRUE."
+
+["&ELECTRONS".conv_thr]
+type = "REAL"
+default = "1.D-6"
+
+["&ELECTRONS".adaptive_thr]
+type = "LOGICAL"
+default = ".FALSE"
+
+["&ELECTRONS".conv_thr_init]
+type = "REAL"
+default = "1.D-3"
+
+["&ELECTRONS".conv_thr_multi]
+type = "REAL"
+default = "1.D-1"
+
+["&ELECTRONS".mixing_mode]
+type = "CHARACTER"
+default = "plain"
+
+["&ELECTRONS".mixing_beta]
+type = "REAL"
+default = "0.7D0"
+
+["&ELECTRONS".mixing_ndim]
+type = "INTEGER"
+default = "8"
+
+["&ELECTRONS".mixing_fixed_ns]
+type = "INTEGER"
+default = "0"
+
+["&ELECTRONS".diagonalization]
+type = "CHARACTER"
+default = "david"
+
+["&ELECTRONS".diago_thr_init]
+type = "REAL"
+
+["&ELECTRONS".diago_cg_maxiter]
+type = "INTEGER"
+
+["&ELECTRONS".diago_ppcg_maxiter]
+type = "INTEGER"
+
+["&ELECTRONS".diago_david_ndim]
+type = "INTEGER"
+default = "2"
+
+["&ELECTRONS".diago_rmm_ndim]
+type = "INTEGER"
+default = "4"
+
+["&ELECTRONS".diago_rmm_conv]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&ELECTRONS".diago_gs_nblock]
+type = "INTEGER"
+default = "16"
+
+["&ELECTRONS".diago_full_acc]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&ELECTRONS".efield]
+type = "REAL"
+default = "0.D0"
+
+["&ELECTRONS"."efield_cart(i), i=1,3"]
+type = "REAL"
+default = "(0.D0,"
+
+["&ELECTRONS".efield_phase]
+type = "CHARACTER"
+default = "none"
+
+["&ELECTRONS".startingpot]
+type = "CHARACTER"
+
+["&ELECTRONS".startingwfc]
+type = "CHARACTER"
+default = "atomic+random"
+
+["&ELECTRONS".tqr]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&ELECTRONS".real_space]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&IONS"."REQUIRED if calculation == 'relax', 'md', 'vc-relax', or 'vc-md' OPTIONAL for calculation == 'scf' (only ion_positions is"]
+type = "used)"
+default = "default"
+
+["&IONS".ion_velocities]
+type = "CHARACTER"
+default = "default"
+
+["&IONS".ion_dynamics]
+type = "CHARACTER"
+
+["&IONS".pot_extrapolation]
+type = "CHARACTER"
+default = "atomic"
+
+["&IONS".wfc_extrapolation]
+type = "CHARACTER"
+default = "none"
+
+["&IONS".remove_rigid_rot]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&IONS".ion_temperature]
+type = "CHARACTER"
+default = "not_controlled"
+
+["&IONS".tempw]
+type = "REAL"
+default = "300.D0"
+
+["&IONS".tolp]
+type = "REAL"
+default = "100.D0"
+
+["&IONS".delta_t]
+type = "REAL"
+default = "1.D0"
+
+["&IONS".nraise]
+type = "INTEGER"
+default = "1"
+
+["&IONS".refold_pos]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&IONS".upscale]
+type = "REAL"
+default = "100.D0"
+
+["&IONS".bfgs_ndim]
+type = "INTEGER"
+default = "1"
+
+["&IONS".trust_radius_max]
+type = "REAL"
+default = "0.8D0"
+
+["&IONS".trust_radius_min]
+type = "REAL"
+default = "1.D-3"
+
+["&IONS".trust_radius_ini]
+type = "REAL"
+default = "0.5D0"
+
+["&IONS".w_1]
+type = "REAL"
+default = "0.01D0"
+
+["&IONS".w_2]
+type = "REAL"
+default = "0.5D0"
+
+["&IONS".fire_alpha_init]
+type = "REAL"
+default = "0.2D0"
+
+["&IONS".fire_falpha]
+type = "REAL"
+default = "0.99D0"
+
+["&IONS".fire_nmin]
+type = "INTEGER"
+default = "5"
+
+["&IONS".fire_f_inc]
+type = "REAL"
+default = "1.1D0"
+
+["&IONS".fire_f_dec]
+type = "REAL"
+default = "0.5D0"
+
+["&IONS".fire_dtmax]
+type = "REAL"
+default = "10.D0"
+
+["&CELL".cell_dynamics]
+type = "CHARACTER"
+
+["&CELL".press]
+type = "REAL"
+default = "0.D0"
+
+["&CELL".wmass]
+type = "REAL"
+default = "0.75*Tot_Mass/pi**2"
+
+["&CELL".cell_factor]
+type = "REAL"
+default = "2.0"
+
+["&CELL".press_conv_thr]
+type = "REAL"
+default = "0.5D0"
+
+["&CELL".cell_dofree]
+type = "CHARACTER"
+default = "all"
+
+["&FCP".fcp_mu]
+type = "REAL"
+status = "REQUIRED"
+
+["&FCP".fcp_dynamics]
+type = "CHARACTER"
+
+["&FCP".fcp_conv_thr]
+type = "REAL"
+default = "1.D-2"
+
+["&FCP".fcp_ndiis]
+type = "INTEGER"
+default = "4"
+
+["&FCP".fcp_mass]
+type = "REAL"
+default = "5.D+6"
+
+["&FCP".fcp_velocity]
+type = "REAL"
+default = "determined"
+
+["&FCP".fcp_temperature]
+type = "CHARACTER"
+default = "ion_temperature"
+
+["&FCP".fcp_tempw]
+type = "REAL"
+default = "tempw"
+
+["&FCP".fcp_tolp]
+type = "REAL"
+default = "tolp"
+
+["&FCP".fcp_delta_t]
+type = "REAL"
+default = "delta_t"
+
+["&FCP".fcp_nraise]
+type = "INTEGER"
+default = "nraise"
+
+["&FCP".freeze_all_atoms]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&RISM".nsolv]
+type = "INTEGER"
+status = "REQUIRED"
+
+["&RISM".closure]
+type = "CHARACTER"
+default = "kh"
+
+["&RISM".tempv]
+type = "REAL"
+default = "300.D0"
+
+["&RISM".ecutsolv]
+type = "REAL"
+default = "4"
+
+["&RISM"."solute_lj(i), i=1,ntyp"]
+type = "CHARACTER"
+default = "uff"
+
+["&RISM"."solute_epsilon(i), i=1,ntyp"]
+type = "REAL"
+
+["&RISM"."solute_sigma(i), i=1,ntyp"]
+type = "REAL"
+
+["&RISM".starting1d]
+type = "CHARACTER"
+
+["&RISM".starting3d]
+type = "CHARACTER"
+
+["&RISM".smear1d]
+type = "REAL"
+default = "2.D0"
+
+["&RISM".smear3d]
+type = "REAL"
+default = "2.D0"
+
+["&RISM".rism1d_maxstep]
+type = "INTEGER"
+default = "50000"
+
+["&RISM".rism3d_maxstep]
+type = "INTEGER"
+default = "5000"
+
+["&RISM".rism1d_conv_thr]
+type = "REAL"
+default = "1.D-8"
+
+["&RISM".rism3d_conv_thr]
+type = "REAL"
+default = "1.D-5"
+
+["&RISM".mdiis1d_size]
+type = "INTEGER"
+default = "20"
+
+["&RISM".mdiis3d_size]
+type = "INTEGER"
+default = "10"
+
+["&RISM".mdiis1d_step]
+type = "REAL"
+default = "0.5D0"
+
+["&RISM".mdiis3d_step]
+type = "REAL"
+default = "0.8D0"
+
+["&RISM".rism1d_bond_width]
+type = "REAL"
+
+["&RISM".rism1d_dielectric]
+type = "REAL"
+default = "-1.0D0"
+
+["&RISM".rism1d_molesize]
+type = "REAL"
+default = "2.0D0"
+
+["&RISM".rism1d_nproc]
+type = "INTEGER"
+default = "128"
+
+["&RISM".rism3d_conv_level]
+type = "REAL"
+default = "0.1"
+
+["&RISM".rism3d_planar_average]
+type = "LOGICAL"
+
+["&RISM".laue_nfit]
+type = "INTEGER"
+default = "4"
+
+["&RISM".laue_expand_right]
+type = "REAL"
+default = "-1.0"
+
+["&RISM".laue_expand_left]
+type = "REAL"
+default = "-1.0"
+
+["&RISM".laue_starting_right]
+type = "REAL"
+default = "0.0"
+
+["&RISM".laue_starting_left]
+type = "REAL"
+default = "0.0"
+
+["&RISM".laue_buffer_right]
+type = "REAL"
+default = "8.0"
+
+["&RISM".laue_buffer_left]
+type = "REAL"
+default = "8.0"
+
+["&RISM".laue_both_hands]
+type = "LOGICAL"
+default = ".FALSE."
+
+["&RISM".laue_wall]
+type = "CHARACTER"
+default = "auto"
+
+["&RISM".laue_wall_z]
+type = "REAL"
+default = "0.0"
+
+["&RISM".laue_wall_rho]
+type = "REAL"
+default = "0.01"
+
+["&RISM".laue_wall_epsilon]
+type = "REAL"
+default = "0.1"
+
+["&RISM".laue_wall_sigma]
+type = "REAL"
+default = "4.0"
+
+["&RISM".laue_wall_lj6]
+type = "LOGICAL"
+default = ".FALSE."
+
+[ATOMIC_SPECIES.X]
+type = "CHARACTER"
+
+[ATOMIC_SPECIES.Mass_X]
+type = "REAL"
+
+[ATOMIC_SPECIES.PseudoPot_X]
+type = "CHARACTER"
+
+[ATOMIC_POSITIONS."Card's options"]
+options = [ "alat", "bohr", "angstrom", "crystal", "crystal_sg",]
+default = "(DEPRECATED)"
+
+[ATOMIC_POSITIONS.X]
+type = "CHARACTER"
+
+[ATOMIC_POSITIONS."x, y, z"]
+type = "REAL"
+
+[ATOMIC_POSITIONS."if_pos(1), if_pos(2), if_pos(3)"]
+type = "INTEGER"
+default = "1"
+
+[K_POINTS."Card's options"]
+options = [ "tpiba", "automatic", "crystal", "gamma", "tpiba_b", "crystal_b", "tpiba_c", "crystal_c",]
+default = "tbipa"
+
+[K_POINTS.nks]
+type = "INTEGER"
+
+[K_POINTS."xk_x, xk_y, xk_z, wk"]
+type = "REAL"
+
+[K_POINTS."nk1, nk2, nk3"]
+type = "INTEGER"
+
+[K_POINTS."sk1, sk2, sk3"]
+type = "INTEGER"
+
+[ADDITIONAL_K_POINTS."Card's options"]
+options = [ "tpiba", "crystal", "tpiba_b", "crystal_b", "tpiba_c", "crystal_c",]
+default = "tbipa"
+
+[ADDITIONAL_K_POINTS.nks_add]
+type = "INTEGER"
+
+[ADDITIONAL_K_POINTS."k_x, k_y, k_z, wk_"]
+type = "REAL"
+
+[CELL_PARAMETERS."Card's options"]
+options = [ "alat", "bohr", "angstrom",]
+
+[CELL_PARAMETERS."v1, v2, v3"]
+type = "REAL"
+
+[CONSTRAINTS.nconstr]
+type = "INTEGER"
+
+[CONSTRAINTS.constr_tol]
+type = "REAL"
+
+[CONSTRAINTS.constr_type]
+type = "CHARACTER"
+
+[CONSTRAINTS."constr(1), constr(2), constr(3),"]
+type = "constr(4)"
+
+[CONSTRAINTS.constr_target]
+type = "REAL"
+
+[OCCUPATIONS.f_inp1]
+type = "REAL"
+
+[OCCUPATIONS.f_inp2]
+type = "REAL"
+
+[ATOMIC_VELOCITIES.V]
+type = "CHARACTER"
+
+[ATOMIC_VELOCITIES."vx, vy, vz"]
+type = "REAL"
+
+[ATOMIC_FORCES.X]
+type = "CHARACTER"
+
+[ATOMIC_FORCES."fx, fy, fz"]
+type = "REAL"
+
+[SOLVENTS."Card's options"]
+options = [ "1/cell", "mol/L", "g/cm^3",]
+
+[SOLVENTS.X]
+type = "CHARACTER"
+
+[SOLVENTS.Density]
+type = "REAL"
+
+[SOLVENTS.Molecule]
+type = "CHARACTER"
+
+[SOLVENTS.Density_Left]
+type = "REAL"
+
+[SOLVENTS.Density_Right]
+type = "REAL"
+
+[HUBBARD."Card's options"]
+options = [ "atomic", "ortho-atomic", "norm-atomic", "wf", "pseudo",]
+
+[HUBBARD."label(1)-manifold(1), u_val(1) CHARACTER-LITERAL, CHARACTER,"]
+type = "REAL"
