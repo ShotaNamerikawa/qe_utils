@@ -1,0 +1,9 @@
+     Input file > Reading   60 bands at    274 k-points
+List of atomic wavefunctions: Range:  -21.9120   39.9250eV  Emin, Emax, [firstk, lastk] > high-symmetry point:  0.0000 0.0000 0.0000   x coordinate   0.0000
+high-symmetry point:  0.5000 0.2887 0.0000   x coordinate   0.5774
+high-symmetry point:  0.3333 0.5774 0.0000   x coordinate   0.9107
+high-symmetry point:  0.0000 0.0000 0.0000   x coordinate   1.5774
+output file (gnuplot/xmgr) > bands in gnuplot/xmgr format written to file graphene.plotband.gnu.dat                                                                                                                                                                                                                                       
+output file (ps) > Efermi > deltaE, reference E (for tics) bands in PostScript format written to file graphene.plotband.ps                                                                                                                                                                                                                                            
+output file for projected band (gnuplot script) > run "gnuplot graphene.projbands.gnu" to get "graphene.projbands.gnu_projected.ps"
+and/or run "ps2pdf graphene.projbands.gnu_projected.ps" to get "graphene.projbands.gnu_projected.pdf"

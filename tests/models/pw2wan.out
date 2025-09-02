@@ -1,0 +1,175 @@
+
+     Program PW2WANNIER v.7.3.1 starts on 26Jun2024 at  5: 6:50 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+         "P. Giannozzi et al., J. Chem. Phys. 152 154105 (2020);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI), running on    22 processors
+
+     MPI processes distributed on     1 nodes
+     R & G space division:  proc/nbgrp/npool/nimage =      22
+     187124 MiB available memory on the printing compute node when the environment starts
+ 
+ 
+     Reading nscf_save data
+
+     Reading xml data from directory:
+
+     ./out/graphene.save/
+     file C.pbe-n-kjpaw_psl.0.1.UPF: wavefunction(s)  2P renormalized
+
+     IMPORTANT: XC functional enforced from input :
+     Exchange-correlation= PBE
+                           (   1   4   3   4   0   0   0)
+     Any further DFT definition will be discarded
+     Please, verify this is what you really want
+
+ 
+     Parallelization info
+     --------------------
+     sticks:   dense  smooth     PW     G-vecs:    dense   smooth      PW
+     Min           9       9      4                  941      941     312
+     Max          10      10      5                  988      988     341
+     Sum         211     211    109                21175    21175    7351
+ 
+     Using Slab Decomposition
+ 
+
+     Check: negative core charge=   -0.000014
+
+     negative rho (up, down):  1.261E-04 0.000E+00
+     Reading collected, re-writing distributed wavefunctions
+ 
+  Spin CASE ( default = unpolarized )
+ 
+  Wannier mode is: standalone     
+ 
+  -----------------
+  *** Reading nnkp 
+  -----------------
+ 
+  Checking info from wannier.nnkp file
+ 
+  - Real lattice is ok
+  - Reciprocal lattice is ok
+  - K-points are ok
+  - Number of wannier functions is ok (  8)
+  - All guiding functions are given 
+ 
+  Projections:
+ 
+  Reading data about k-point neighbours 
+ 
+  All neighbours are found 
+ 
+  Opening pp-files 
+ 
+ 
+  -------------------------------------
+  *** Compute  A with atomic projectors
+  -------------------------------------
+ 
+  Use atomic projectors from UPF
+ 
+     (read from pseudopotential files):
+
+     state #   1: atom   1 (C  ), wfc  1 (l=0 m= 1)
+     state #   2: atom   1 (C  ), wfc  2 (l=1 m= 1)
+     state #   3: atom   1 (C  ), wfc  2 (l=1 m= 2)
+     state #   4: atom   1 (C  ), wfc  2 (l=1 m= 3)
+     state #   5: atom   2 (C  ), wfc  1 (l=0 m= 1)
+     state #   6: atom   2 (C  ), wfc  2 (l=1 m= 1)
+     state #   7: atom   2 (C  ), wfc  2 (l=1 m= 2)
+     state #   8: atom   2 (C  ), wfc  2 (l=1 m= 3)
+ 
+     Subspace diagonalization in iterative solution of the eigenvalue problem:
+     a serial algorithm will be used
+
+ 
+     Problem Sizes 
+       n_proj    =            8
+       natomwfc  =            8
+       num_bands =           60
+       nbnd      =           60
+       nkstot    =           81
+       npwx      =          127
+       nkb       =           16
+ 
+  Number of local k points =       81
+       1       2       3       4       5       6       7       8       9      10
+      11      12      13      14      15      16      17      18      19      20
+      21      22      23      24      25      26      27      28      29      30
+      31      32      33      34      35      36      37      38      39      40
+      41      42      43      44      45      46      47      48      49      50
+      51      52      53      54      55      56      57      58      59      60
+      61      62      63      64      65      66      67      68      69      70
+      71      72      73      74      75      76      77      78      79      80
+      81
+
+
+  AMN calculated
+ 
+  ---------------
+  *** Compute  M 
+  ---------------
+ 
+  Number of local k points =       81
+       1       2       3       4       5       6       7       8       9      10
+      11      12      13      14      15      16      17      18      19      20
+      21      22      23      24      25      26      27      28      29      30
+      31      32      33      34      35      36      37      38      39      40
+      41      42      43      44      45      46      47      48      49      50
+      51      52      53      54      55      56      57      58      59      60
+      61      62      63      64      65      66      67      68      69      70
+      71      72      73      74      75      76      77      78      79      80
+      81
+  MMN calculated
+ 
+  -----------------------------------
+  *** Orbital terms are not computed 
+  -----------------------------------
+ 
+  -----------------------------------
+  *** SHC terms are not computed 
+  -----------------------------------
+ 
+  ----------------
+  *** Write bands 
+  ----------------
+ 
+ 
+  -----------------------------
+  *** Plot info is not printed 
+  -----------------------------
+ 
+  -----------------------------
+  *** Parity info is not printed 
+  -----------------------------
+ 
+  ------------
+  *** Stop pp 
+  ------------
+ 
+ 
+     init_pw2wan  :      0.64s CPU      2.71s WALL (       1 calls)
+     compute_amn  :      0.09s CPU      0.12s WALL (       1 calls)
+     compute_mmn  :      3.44s CPU      4.32s WALL (       1 calls)
+
+     Internal routines:
+     compute_u_kb :      1.56s CPU      1.63s WALL (     648 calls)
+ 
+     PW2WANNIER   :      4.17s CPU      7.40s WALL
+
+ 
+   This run was terminated on:   5: 6:58  26Jun2024            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=
+ 
