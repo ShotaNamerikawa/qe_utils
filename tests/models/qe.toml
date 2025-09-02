@@ -1,0 +1,25 @@
+# Do not replace sentences in this toml file.
+root_dir = "tests/models"
+[scf]
+    input   = "scf.in"
+    output  = "scf.out"
+[nscf]
+    input   = "nscf.in"
+    output  = "nscf.out"
+[plotband]
+    dir     = "bands"
+    input   = "plotband.in"
+    output  = "plotband.out"
+[bands]
+    dir = "bands"
+    input   = "bands.in"
+    output  = "bands.out"
+[bandsx]
+    dir = "bands"
+    input   = "bandx.in"
+    output  = "bandsx.out"
+    filband = "bands.dat"
+[projwfc]
+    dir     = "bands"
+    input   = "projwfc.in"
+    output  = "projwfc.out"
